@@ -2,7 +2,7 @@
   var app = angular.module('tracker', ['ui.router']);
   app.controller('MainCtrl', function($http, $state){
       var self = this;
-      var rootUrl = "http://localhost:3000"
+      var rootUrl = "https://dry-brook-77200.herokuapp.com/"
 
       $http.get(`${rootUrl}/events`, {
           // headers: {
