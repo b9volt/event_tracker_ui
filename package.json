@@ -15,5 +15,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "engines" :{
+    "node": "v6.7.0"
+  }
 }

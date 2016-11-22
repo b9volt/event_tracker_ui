@@ -1,0 +1,21 @@
+<div class="form">
+  <form ng-submit="main.editEvent($state.params.event)"action="#">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" ng-model="$state.params.event.name">
+    </div>
+    <div>
+      <label for="location">Location</label>
+      <input type="text" ng-model="$state.params.event.location">
+    </div>
+    <div>
+      <label for="date">Date</label>
+      <input type="date" ng-model="$state.params.event.date">
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <input type="text" ng-model="$state.params.event.description">
+    </div>
+    <button type="submit">Edit Event!</button>
+  </form>
+</div>
