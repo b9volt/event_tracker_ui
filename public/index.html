@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang='en' ng-app="tracker">
   <head>
     <script type="text/javascript"></script>
-    <!-- Angular -->
+    Angular
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js" charset="utf-8"></script>
-    <!-- UI router -->
+    UI router
     <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <!-- BOOTSTRAP -->
+    BOOTSTRAP
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- CSS -->
+    CSS
       <link rel="stylesheet" href="/css/styles.css" media="screen" title="no title">
     <script src="js/app.js" charset="utf-8"></script>
     <script src="js/router.js" charset="utf-8"></script>
@@ -21,15 +21,13 @@
       <header>
         <img src="http://i.imgur.com/BbWUklb.png" style="width:300px;" alt="event-tracker-logo"/>
           <nav>
-            <!-- <button ui-sref-active="active" ui-sref="allEvents">all events</button>
-            <span class="divider">|</span> -->
             <button ui-sref-active="active" ui-sref="addEvent">create event</button>
           </nav>
       </header>
       <h1>Event Tracker</h1>
       {{1 + 1}}
     </div>
-    <!-- <div ng-repeat="event in events.events"> -->
+    <div class="" ng-repeat="event in events.events">
       <div>
           <p>Name: {{event.name}}</p>
           <p>Location: {{event.location}}</p>
@@ -43,5 +41,77 @@
     </div>
       <main ui-view></main>
     <footer>&copy; Brad Volts</footer>
+  </body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html ng-app="EventTrackerApp">
+<head>
+  <script type="text/javascript"></script>
+  <!-- Angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js" charset="utf-8"></script>
+  <!-- UI router -->
+  <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <!-- BOOTSTRAP -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css" media="screen" title="no title">
+  <script src="js/app.js" charset="utf-8"></script>
+  <script src="js/eventsController.js" charset="utf-8"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Tracker</title>
+</head>
+  <body ng-controller="eventsController as events">
+    <div>
+      <header>
+        <img src="http://i.imgur.com/BbWUklb.png" style="width:300px;" alt="event-tracker-logo"/>
+          <nav>
+            <button ui-sref-active="active" ui-sref="addEvent">create event</button>
+          </nav>
+      </header>
+      <h1>Event Tracker</h1>
+      {{1 + 1}}
+    </div>
+    <div class="" ng-repeat="event in events.events">
+      <div>
+        <p>Name: {{event.name}}</p>
+        <p>Location: {{event.location}}</p>
+        <p>Date: {{event.date}}</p>
+        <p>Description: {{event.description}}</p>
+        <div class="nav">
+          <button ui-sref="editEvent({event: event})">Edit</button>
+          <button ng-click="event.deleteEvent(event.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form to add  -->
+    <!-- <div class="form">
+      <form ng-submit="events.addEvent(newEvent)">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" ng-model="newEvent.name">
+        </div>
+        <div>
+          <label for="location">Location</label>
+          <input type="text" ng-model="newEvent.location">
+        </div>
+        <div>
+          <label for="date">Date</label>
+          <input type="date" ng-model="newEvent.date">
+        </div>
+        <div>
+          <label for="description">Description</label>
+          <input type="text" ng-model="newEvent.description">
+        </div>
+        <button type="submit">Add Event!</button>
+      </form>
+    </div> -->
+    <!-- Posts to events/add -->
+    <main ui-view></main>
+  <footer>&copy; Brad Volts</footer>
   </body>
 </html>

@@ -1,21 +1,21 @@
-(function(){
-  var app = angular.module('tracker', ['ui.router']);
-  app.controller('MainCtrl', function($http, $state){
-      var self = this;
-      var rootUrl = "https://dry-brook-77200.herokuapp.com/"
-
-      $http.get(`${rootUrl}/events`, {
-          // headers: {
-          //   'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token'))
-          // }
-        })
-        .then(function(response) {
-          self.events = response.data.events;
-          console.log(response.data);
-        })
-        .catch(function(err) {
-          console.log('err',err);
-        });
+// (function(){
+//   var app = angular.module('tracker', ['ui.router']);
+//   app.controller('MainCtrl', function($http, $state){
+//       var self = this;
+//       var rootUrl = "http://localhost:3000"
+//
+//       $http.get(`${rootUrl}/events`, {
+//           headers: {
+//             'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+//           }
+//         })
+//         .then(function(response) {
+//           self.events = response.data;
+//           console.log(response.data);
+//         })
+//         .catch(function(err) {
+//           console.log('err',err);
+//         });
 
       // CRUD LOGIC
       // ==============================
@@ -38,7 +38,7 @@
       //       console.log(err);
       //     });
       // }
-
+      //
       // function deleteEvent(id) {
       //   $http.delete(`${rootUrl}/events/${id}`, {
       //      headers: {
@@ -65,8 +65,15 @@
       // }
 
       // PUBLIC METHODS
+      // ==============================
       // this.addEvent = addEvent;
       // this.deleteEvent = deleteEvent;
       // this.editEvent = editEvent;
-    })
-})();
+//     // })
+// })();
+
+
+
+(function(){
+    angular.module('EventTrackerApp', []);
+})()
