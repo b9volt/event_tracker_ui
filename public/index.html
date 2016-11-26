@@ -59,7 +59,7 @@
   <!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css" media="screen" title="no title">
   <script src="js/app.js" charset="utf-8"></script>
-  <script src="js/eventsController.js" charset="utf-8"></script>
+  <script src="js/router.js" charset="utf-8"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Event Tracker</title>
@@ -69,7 +69,7 @@
       <header>
         <img src="http://i.imgur.com/BbWUklb.png" style="width:300px;" alt="event-tracker-logo"/>
           <nav>
-            <button ui-sref-active="active" ui-sref="addEvent">create event</button>
+            <button ui-sref="new" ui-sref-active="active">create event</button>
           </nav>
       </header>
       <h1>Event Tracker</h1>
@@ -88,28 +88,6 @@
       </div>
     </div>
 
-    <!-- Form to add  -->
-    <!-- <div class="form">
-      <form ng-submit="events.addEvent(newEvent)">
-        <div>
-          <label for="name">Name</label>
-          <input type="text" ng-model="newEvent.name">
-        </div>
-        <div>
-          <label for="location">Location</label>
-          <input type="text" ng-model="newEvent.location">
-        </div>
-        <div>
-          <label for="date">Date</label>
-          <input type="date" ng-model="newEvent.date">
-        </div>
-        <div>
-          <label for="description">Description</label>
-          <input type="text" ng-model="newEvent.description">
-        </div>
-        <button type="submit">Add Event!</button>
-      </form>
-    </div> -->
     <!-- Posts to events/add -->
     <main ui-view></main>
   <footer>&copy; Brad Volts</footer>

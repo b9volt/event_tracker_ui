@@ -74,6 +74,50 @@
 
 
 
+// (function(){
+//     angular.module('EventTrackerApp', []);
+// })()
+
 (function(){
-    angular.module('EventTrackerApp', []);
+  angular.module('EventTrackerApp', ['ui.router'])
+    .controller('eventsController', eventsController);
+
+
+  function eventsController($http, $state, $stateParams){
+
+    var self = this;
+    var server = "http://localhost:3000/"
+    // For example, var server = 'https://enigmatic-garden-65625.herokuapp.com/api/'
+
+    $http.get(`${server}/events`)
+      .then(function(response) {
+          self.events = response.data;
+          console.log(response.data);
+          console.log(self.events[0].name);
+    });
+
+    // CRUD LOGIC
+    // ==============================
+    function addEvent(newEvent) {
+      console.log(newEvent)
+      $http.post(`${server}/events`, {event: newEvent}, {
+          // headers: {
+          //   'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+          // }
+        })
+        .then(function(response) {
+          newEvent.name = '';
+          newEvent.location ='';
+          newEvent.date = '';
+          newEvent.description = '';
+
+          $state.go('allEvents', {url: '/events'})
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
+    }
+
+  }
+
 })()
