@@ -1,0 +1,8 @@
+<div class="home">
+  <section ng-controller="MainController as events" ng-init="events.getAllEvents()">
+    <h1>Here's a list of your events</h1>
+    <p>
+      To see more information or edit an event, please click on it.
+    </p>
+      <li ng-repeat="looperName in events.eventData" ng-click="events.goToShowPage(looperName)"> <a>{{ looperName.name }} {{ looperName.location }} {{ looperName.date | date : 'shortDate' }} {{ looperName.description | limitTo: 20}}</a></li>
+  </section>

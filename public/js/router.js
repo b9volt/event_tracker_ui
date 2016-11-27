@@ -1,33 +1,29 @@
 (function(){
   angular
-    .module('tracker', ['ui.router'])
-    .config(Router);
+    .module('EventTrackerApp', ['ui.router', 'events'])
+    .config(MainRouter);
 
-  function Router($stateProvider, $urlRouterProvider){
+  MainRouter.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
-    $urlRouterProvider.otherwise("/index");
+  function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
+    $urlRouterProvider.otherwise("/");
 
     $stateProvider
     .state('index', {
       url: '/',
-      templateUrl: "/index.html",
+      templateUrl: 'index.html'
     })
-    // .state('new', {
-    //   url: '/newEvent',
-    //   templateUrl: '/partials/new.html',
-    //   controller: 'eventsController',
-    //   controllerAs: 'events',
-    // })
+    .state('createEvent', {
+      url: '/createEvent',
+      templateUrl: '/partials/create.html',
+    })
+    .state('home', {
+      url: '/home',
+      templateUrl: '/partials/home.html',
+    })
     .state('editEvent', {
-      url: '/events/edit',
-      params: {
-        event: null
-      },
+      url: '/editEvent',
       templateUrl: '/partials/edit.html',
-    })
-    .state('allEvents', {
-      url: '/events',
-      templateUrl: '/index.html',
     })
   }
 })()

@@ -23,7 +23,7 @@ h1 {
 
 .home {
   text-align: center;
-  padding-top: 5em;
+  padding: 5em 0;
 }
 
 nav {
@@ -58,7 +58,7 @@ footer {
 	background-color: #6A2E35;
   color: white;
 	text-align: center;
-  padding: 1em;
+  margin-top: 1em;
   font-family: 'Lemonada', cursive;
   font-size: 16px;
   position: fixed;

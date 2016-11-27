@@ -1,93 +1,14 @@
-// (function(){
-//   var app = angular.module('tracker', ['ui.router']);
-//   app.controller('MainCtrl', function($http, $state){
-//       var self = this;
-//       var rootUrl = "http://localhost:3000"
-//
-//       $http.get(`${rootUrl}/events`, {
-//           headers: {
-//             'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token'))
-//           }
-//         })
-//         .then(function(response) {
-//           self.events = response.data;
-//           console.log(response.data);
-//         })
-//         .catch(function(err) {
-//           console.log('err',err);
-//         });
-
-      // CRUD LOGIC
-      // ==============================
-      // function addEvent(newEvent) {
-      //   console.log(newEvent)
-      //   $http.post(`${rootUrl}/events`, {event: newEvent}, {
-      //       headers: {
-      //         'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token'))
-      //       }
-      //     })
-      //     .then(function(response) {
-      //       newEvent.name = '';
-      //       newEvent.location ='';
-      //       newEvent.date = '';
-      //       newEvent.description = '';
-      //
-      //       $state.go('allEvents', {url: '/events'})
-      //     })
-      //     .catch(function(err) {
-      //       console.log(err);
-      //     });
-      // }
-      //
-      // function deleteEvent(id) {
-      //   $http.delete(`${rootUrl}/events/${id}`, {
-      //      headers: {
-      //        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token'))
-      //      }
-      //    })
-      //     .then(function(response) {
-      //       console.log(response);
-      //       $state.go('allEvents', {url: '/events'}, {reload: true})
-      //     })
-      // }
-      //
-      // function editEvent(event) {
-      //   $http.put(`${rootUrl}/events/${$state.params.event.id}`,
-      //      { event: event }, {
-      //         headers: {
-      //           'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token'))
-      //         }
-      //       })
-      //     .then(function(response){
-      //       console.log(response);
-      //       $state.go('allEvents', {url: '/events'})
-      //     })
-      // }
-
-      // PUBLIC METHODS
-      // ==============================
-      // this.addEvent = addEvent;
-      // this.deleteEvent = deleteEvent;
-      // this.editEvent = editEvent;
-//     // })
-// })();
-
-
-
-// (function(){
-//     angular.module('EventTrackerApp', []);
-// })()
-
 (function(){
-  angular.module('EventTrackerApp', ['ui.router'])
-    .controller('eventsController', eventsController);
+  angular.module('events', ['ui.router'])
+    .controller('MainController', MainController);
 
+    MainController.$inject = ['$http', '$state', '$stateParams', '$location'];
 
-  function eventsController($http, $state, $stateParams){
+    function MainController($http, $state, $stateParams, $location) {
 
     var self = this;
     var server = "http://localhost:3000/"
-    // For example, var server = 'https://enigmatic-garden-65625.herokuapp.com/api/'
+    // var server = "https://dry-brook-77200.herokuapp.com/"
 
     $http.get(`${server}/events`)
       .then(function(response) {
@@ -96,28 +17,44 @@
           console.log(self.events[0].name);
     });
 
+    // STATES
+    // ==============================
+    // this.isCreating
+
     // CRUD LOGIC
     // ==============================
-    function addEvent(newEvent) {
-      console.log(newEvent)
-      $http.post(`${server}/events`, {event: newEvent}, {
-          // headers: {
-          //   'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token'))
-          // }
-        })
-        .then(function(response) {
-          newEvent.name = '';
-          newEvent.location ='';
-          newEvent.date = '';
-          newEvent.description = '';
+    // this.createEvent = function() {
+    //   self.newEvent = self.event
+    //
+    //   $http.post(server/events
+    //   { event: self.newEvent
+    //   })
+    //     .catch(function(err) {
+    //       console.log('err', err);
+    //     })
+    //     .then(function(response) {
+    //       $state.go('home', {url: '/home'});
+    //     });
+    // }; //end this.createTrip
 
-          $state.go('allEvents', {url: '/events'})
-        })
-        .catch(function(err) {
-          console.log(err);
-        });
-    }
 
+    //       newEvent.name = '';
+    //       newEvent.location ='';
+    //       newEvent.date = '';
+    //       newEvent.description = '';
+    //       console.log("I am working");
+    //       $state.go('allEvents', {url: '/events'})
+    //     })
+    //     .catch(function(err) {
+    //       console.log(err);
+    //     });
+    // }
+
+    // PUBLIC METHODS
+    // ==============================
+    // this.createEvent = createEvent;
+    // this.deleteEvent = deleteEvent;
+    // this.editEvent = editEvent;
   }
 
 })()
