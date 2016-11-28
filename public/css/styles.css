@@ -4,7 +4,7 @@
 }
 
 body {
-  background: white;
+  background: #F1ECEC;
 }
 
 header {
@@ -24,6 +24,13 @@ h1 {
 .home {
   text-align: center;
   padding: 5em 0;
+}
+
+.list {
+    width: 350px;
+    /*float: left;*/
+    margin: 5px;
+    background-color: #BBA0A3;
 }
 
 nav {

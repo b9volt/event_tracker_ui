@@ -1,40 +1,54 @@
 <!DOCTYPE html>
-<html ng-app="EventTrackerApp">
-  <head>
-    <script type="text/javascript"></script>
-    <!-- Angular -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js" charset="utf-8"></script>
-    <!-- UI router -->
-    <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <!-- BOOTSTRAP -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- CSS -->
-      <link rel="stylesheet" href="/css/styles.css" media="screen" title="no title">
-    <script src="js/app.js" charset="utf-8"></script>
-    <script src="js/router.js" charset="utf-8"></script>
+<html ng-app="EventList">
+<head>
     <meta charset="utf-8">
+    <title>Event List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css" media="screen" title="no title">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+    <script src='js/app.js'></script>
+    <script src='js/eventsController.js'></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Event Tracker</title>
   </head>
-  <body ng-controller="MainController as events">
-      <header>
-        <img src="http://i.imgur.com/BbWUklb.png" style="width:300px;" alt="event-tracker-logo"/>
-          <nav>
-            <button ui-sref="createEvent" ui-sref-active="active">create event</button>
-          </nav>
-      </header>
-      <h1>Event Tracker</h1>
-      <div ng-repeat="event in events.events">
-        <p>Name: {{event.name}}</p>
-        <p>Location: {{event.location}}</p>
-        <p>Date: {{event.date}}</p>
-        <p>Description: {{event.description}}</p>
-        <div class="nav">
-          <button ui-sref="editEvent({event: event})">Edit</button>
-          <button ng-click="event.deleteEvent(event.id)">Delete</button>
+  <body ng-controller="eventsController as events">
+    <header>
+      <img src="http://i.imgur.com/BbWUklb.png" style="width:300px;" alt="event-tracker-logo"/>
+        <nav>
+          <button ui-sref="createEvent" ui-sref-active="active">create event</button>
+        </nav>
+    </header>
+    <h1>Event List</h1>
+    <form ng-submit="events.create(event)">
+      Name: <input type="text" ng-model="event.name" placeholder="Name">
+      Location: <input type="text" ng-model="event.location" placeholder="Location">
+      Date: <input type="date" ng-model="event.date" placeholder="Date">
+      Description: <input type="text" ng-model="event.description" placeholder="Description">
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+    <div ng-repeat="event in events.events">
+      <div ng-if="event.read == null">
+        <div class="list" ng-click="showEdit = ! showEdit">
+          <p>Name: {{event.name}}</p>
+          <p>Location: {{event.location}}</p>
+          <p>Date: {{event.date}}</p>
+          <p>Description: {{event.description}}</p>
+        </div>
+        <div ng-show="showEdit">
+          <form ng-submit="events.update(event)">
+            Name: <input type="text" ng-model="event.name" placeholder="Name">
+            Location: <input type="text" ng-model="event.location" placeholder="Location">
+            Date: <input type="date" ng-model="event.date" placeholder="Date">
+            Description: <input type="text" ng-model="event.description" placeholder="Description">
+            <button type="submit" class="btn btn-primary">Edit</button>
+          </form>
+          <form ng-submit="events.destroy(event)">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
         </div>
       </div>
-      <main ui-view></main>
+    </div>
     <footer>&copy; Brad Volts</footer>
   </body>
 </html>
