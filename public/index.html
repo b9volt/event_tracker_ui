@@ -21,7 +21,7 @@
     </header>
     <h1>Event List</h1>
     <!-- <div ng-show="showCreate"> -->
-    <form ng-submit="events.create(event)">
+    <form class="edit" ng-submit="events.create(event)">
       Name: <input type="text" ng-model="event.name" placeholder="Name">
       Location: <input type="text" ng-model="event.location" placeholder="Location">
       Date: <input type="date" ng-model="event.date" placeholder="Date">
@@ -37,7 +37,7 @@
           <p>Date: {{event.date}}</p>
           <p>Description: {{event.description}}</p>
         </div>
-        <div class="edit" ng-show="showEdit">
+        <div  class="edit" ng-show="showEdit">
           <form ng-submit="events.update(event)">
             Name: <input type="text" ng-model="event.name" placeholder="Name">
             Location: <input type="text" ng-model="event.location" placeholder="Location">

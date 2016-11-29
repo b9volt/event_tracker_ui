@@ -3,8 +3,8 @@
   .controller('eventsController', eventsController)
 
   function eventsController($http){
-    // var url = 'http://localhost:3000'
-    var url = 'https://dry-brook-77200.herokuapp.com/'
+    var url = 'http://localhost:3000'
+    // var url = 'https://dry-brook-77200.herokuapp.com/'
     var self = this;
 
     $http.get(`${url}/events`)
