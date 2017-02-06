@@ -2,7 +2,7 @@
 
 ## event-tracker-api
 
-[Click here for event-tracker-ui on Heroku]()
+[Click here for event-tracker-ui on Heroku](https://frozen-crag-50388.herokuapp.com/)
 
 [Docs (user stories, wireframes)](https://drive.google.com/drive/folders/0B0PrQDFsuZ3UVXg2OTQ4emxhNjA?ths=true)
 
